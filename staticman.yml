@@ -1,0 +1,36 @@
+comments:
+  branch: main
+  commitMessage: Add Staticman data
+
+  filename: "comment_{@timestamp}"
+  path: "_data/comments/{options.slug}"
+  format: yaml
+  moderation: true
+  allowedFields: ["name", "email", "message", "replying_to"]
+  requiredFields: ["name", message"]
+  generatedFields:
+    date:
+      type: date
+      options:
+        format: "timestamp-seconds"
+
+  # Name of the site. Used in notification emails.
+  name: "andrewweinstein.dev"
+  allowedOrigins: ["*.andrewweinstein.dev"]
+
+  # api key and domain are encrypted
+  notifications:
+    enabled: true
+    apiKey: "ULiK6q6p03gkOHVY4ifeOeeME0px6yD433ONyNddQMzSiD/Ba9jc6+6rZkeZJAoOIHZV1T16Ff9wMkCfeUvMrnXYlqEHV01RF6/5QEm1VTkbrX0qT87D+5mVh7yony5bpBU9imbU00XrIh1rKvh4FaaiNiNLp/tM43+OVQJepJDQJVQSjuv3pwVqrg+LabFwn7lmNeZtxiV6E+/UM+CN+6E+SZkdhLQQXB2RVCZw8Fu/mNyUN6yPqyiHyTh4EhuLZo0Y/vCXAP+959I2rD383gw9Pg/uqRFKpjIhcs5Il6hBtk9n9LI1VjiZQGOejvuef6jOMSqRG7BuWQWWJ1+y1bRZu6lJgD9o8g/TauSBuZ/mgeoEbE7iKtkSLKc4PoFAbqYEvV6xbo0KlzMOY/B+X9uF36RZyVE7NgsAcw+4vURYBjHHB5QYFCZDUUTg01SsdkeqnEWlJgoyOelSlwpYyeU4N58mf8c4bMSHcerJXGWpFhc4TB20LfYGX9lllCW7V40jpc1hvj6cmdl4X4VY8C3y3xPs9XLt+hoRYUY1p9ctdl3DPX4dJZmqX5AZX53MY7FEMoURx8F75KwpuMOY+XuMyItElKUasnNX+/P+9ZojrHWQPt3SaFud04nUVqmU/bEQb6PfDbz0YvAknzQ3rRu+dZzSTGPv/KguHos38FA="
+    domain: "VB2bHKTbXugutH370c8mNHeJlhDyS/d2npnRvxAFbmA6Wy9GRuGsAZrQLaT1LHy8r1+5/MWC5JPGQ/wYx4MlFS9GM6MeJKIdD9in+gM8l5oqO913WF7M5I/aj/PGYs6lZHwOk9yMCRS0M8nmK6FVQho4FwzeWkd1k7BPcdw9SsOaxTJTRmOJfP97YSaSlRUjMPAj2kQcR+cE/Uw9AGdOSFkRuaqr4WADXyTGexfCXrVP216kPhNI+r54cSTE5RJvc56WQahWhCSiCp2tXrgzIF1fn9VQ9TrfLSfD8ukD5PYfwjQtgPdULKX58qJ+QIMma2jHl4xwCO2uCwe8AKfctbO6dEE19rJ8JpndFeXvYI0dJRmrwjMLEKWY2GSIVLGQbRSirItV//MBCkmyp3IMBpgyhMiV1otdzIjjKfedYuZcSLjF3e2XTWt5Zht5rxrYnjfDQk5LuxvI1CFr8TCX001qZca9z0JWGRAR25Os4U1dMDqh1GmoJFPhflVusUiPDO+MOPwUTHOxqndwUaK2y9yq7pWlm+thW3DjyndfobFVK+ZAsfIQGCUZekZW/gVtzdKNWHJH/Yg5EclYM35se6J+jEzOuhMfpEEtGPc0Iy6m/SQ6lDTrR+LJSQ5Sq6IdvlmxpTZfbTRQ8fNjT84c96eRrf+gyo6iTnGLj8NHvDE="
+
+  # List of transformations to apply to any of the fields supplied. Keys are
+  # the name of the field and values are possible transformation types.
+  transforms:
+    email: md5
+
+  # secret is encrypted
+  reCaptcha:
+    enabled: true
+    siteKey: "6LeYs_oZAAAAAOehy32VTQxnxbR9KkxiHYQzyJZT"
+    secret: "Qa9I9n5z4U6jubiY/Zw1wJcvpVWW+Z13O0aFzQF3J16sgqlJT9Z1nm0pTh09MQP9/o+ihxj8t2py/mvPfgJDtmUEl4PvfVyDUt1beumEAEr10oeivqUvXZjH5N8jvYE1g7fqS2AXkTsTcEMH6vb5IYBuXSO+SUGhH5zn+4rPpLi8UqzloSmg08L8WvYna/4EVopp+/h5aN/gt2/eS9Ag/kQZYRucCnufrptdgyrg9Qu5Dr0xNz2t+2iz/EfAtOyh62bk6i1Zuka1/exLjWxwjLrBOzbBcqBmW5+pv66fOAonUPnYT+iWKTC2lAes1FtnzOWGZOYa+XDgkE0/IWSUOZlcwoTozqfI3oyTnnIYZNv+m3rDWMbSR8PCLv4vjnp+r3OGvmlf51wFj6pxlNaGALkjvbH+v7EArhHg1zG20cJ+UecOOGR9d4FdHsPhBM+EmktjvkZpqoANL6UsMcdlJJsbm3cexcuBPmRL3EdIrfD0pcRxTw6eJFvfqgp9LA6tcYH1stLBP+1Jgm//5YmeElGYPGUnnlZf9Ed8zOd5f19WgdxsSmpq9V9EYwoPrSvw52nKHFZPxU3EGztDXxNXzJlG5jDfwELYErjkCcjyBXEKtJFGMJEuwabZJd2DzQ9FcYKAx/1RhIT1UIFsPZwN8hy2dTUBALHfPZSQLnqAQKs="

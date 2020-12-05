@@ -7,6 +7,7 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://andrewweinstein.dev"
 github_username:  ajw725
 linkedin_username: ajw725
+staticman_url: https://staticman-ajw.herokuapp.com/v2/entry/ajw725/ajw725.github.io/main/comments
 
 # Build settings
 theme: minima
@@ -14,6 +15,11 @@ future: true
 
 plugins:
   - jekyll-feed
+
+# secret is encrypted
+reCaptcha:
+  siteKey: "6LeYs_oZAAAAAOehy32VTQxnxbR9KkxiHYQzyJZT"
+  secret: "Qa9I9n5z4U6jubiY/Zw1wJcvpVWW+Z13O0aFzQF3J16sgqlJT9Z1nm0pTh09MQP9/o+ihxj8t2py/mvPfgJDtmUEl4PvfVyDUt1beumEAEr10oeivqUvXZjH5N8jvYE1g7fqS2AXkTsTcEMH6vb5IYBuXSO+SUGhH5zn+4rPpLi8UqzloSmg08L8WvYna/4EVopp+/h5aN/gt2/eS9Ag/kQZYRucCnufrptdgyrg9Qu5Dr0xNz2t+2iz/EfAtOyh62bk6i1Zuka1/exLjWxwjLrBOzbBcqBmW5+pv66fOAonUPnYT+iWKTC2lAes1FtnzOWGZOYa+XDgkE0/IWSUOZlcwoTozqfI3oyTnnIYZNv+m3rDWMbSR8PCLv4vjnp+r3OGvmlf51wFj6pxlNaGALkjvbH+v7EArhHg1zG20cJ+UecOOGR9d4FdHsPhBM+EmktjvkZpqoANL6UsMcdlJJsbm3cexcuBPmRL3EdIrfD0pcRxTw6eJFvfqgp9LA6tcYH1stLBP+1Jgm//5YmeElGYPGUnnlZf9Ed8zOd5f19WgdxsSmpq9V9EYwoPrSvw52nKHFZPxU3EGztDXxNXzJlG5jDfwELYErjkCcjyBXEKtJFGMJEuwabZJd2DzQ9FcYKAx/1RhIT1UIFsPZwN8hy2dTUBALHfPZSQLnqAQKs="
 
 # exclude:
 #   - .sass-cache/
