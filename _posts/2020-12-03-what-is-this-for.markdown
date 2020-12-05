@@ -2,6 +2,7 @@
 layout: post
 title:  "What is this for?"
 date:   2020-12-03 19:53:47 -0700
+tags: misc
 ---
 
 I've wanted to set up a personal website for a while, but every time I thought about it, I ran into a whole bunch of really confounding questions that I'm sure every developer has wrestled with at some point, such as:
