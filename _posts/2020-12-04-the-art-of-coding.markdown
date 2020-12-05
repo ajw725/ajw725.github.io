@@ -2,7 +2,6 @@
 layout: post
 title:  "The Art of Coding"
 date:   2020-12-04 08:00:00 -0700
-categories: coding art
 ---
 
 For my first actual post (not counting the one explaining why I'm posting anything at all), I figured I'd copy over an article I wrote [on LinkedIn](https://www.linkedin.com/pulse/art-coding-andrew-weinstein/) recently. I don't know why I wrote an article on LinkedIn, but I suppose it's the same reason I created this website, and maybe if I had created this website first, I'd have just posted it here in the first place.
