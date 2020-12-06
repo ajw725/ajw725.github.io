@@ -12,6 +12,7 @@ form.addEventListener('submit', function(e) {
 
   fetch(form.action, {
     method: form.method.toUpperCase(),
+    mode: 'cors',
     headers: {
       'Content-Type': 'application/json'
     },
