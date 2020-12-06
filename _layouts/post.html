@@ -1,6 +1,9 @@
 ---
 layout: default
 ---
+
+{% capture post_slug %}{{ page.title | slugify: "latin" }}{% endcapture %}
+
 <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
