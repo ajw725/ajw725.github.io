@@ -34,3 +34,27 @@
     border-radius: 5px;
   }
 }
+
+#success-message {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: rgba(70, 190, 50, 0.2);
+  position: relative;
+
+  &.hide {
+    display: none;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  #close-message {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+}

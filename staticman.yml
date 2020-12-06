@@ -16,7 +16,6 @@ comments:
 
   # Name of the site. Used in notification emails.
   name: "andrewweinstein.dev"
-  allowedOrigins: ["*.andrewweinstein.dev"]
 
   # api key and domain are encrypted
   notifications:

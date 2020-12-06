@@ -1,5 +1,4 @@
 <form class="js-comment-form form" method="post" action="{{ site.staticman_url }}" autocomplete="off">
-  <input type="hidden" name="options[origin]" value="{{ page.url | absolute_url }}">
   <input type="hidden" name="options[parent]" value="{{ page.url | absolute_url }}">
   <input type="hidden" id="comment-replying-to" name="fields[replying_to]" value="">
   <input type="hidden" name="options[slug]" value="{{ post_slug }}">
@@ -61,6 +60,11 @@
     Submit
   </button>
 </form>
+
+<div id="success-message" class="hide">
+  <p>Your comment has been submitted.</p>
+  <span id="close-message">X</span>
+</div>
 
 <br>
 <small>

@@ -2,13 +2,35 @@
 // from: https://github.com/eduardoboucas/popcorn/blob/gh-pages/js/main.js 
 var form = document.querySelector('.js-comment-form');
 var submitBtn = document.getElementById('comment-form-submit');
+var successMsg = document.getElementById('success-message');
 
 form.addEventListener('submit', function(e) {
   e.preventDefault();
 
   submitBtn.setAttribute('disabled', 'disabled');
+  submitBtn.textContent = 'Please wait...';
 
+  var payload = {};
   var formData = new FormData(form);
+  for(var [k, v] of formData) {
+    if(k.includes('[')) {
+      var obj = payload;
+      var keyParts = k.split(/\[|\]/).filter(function(x) { return !!x })
+      var depth = keyParts.length;
+      keyParts.forEach(function(keyPart, idx) {
+        if(idx === depth - 1) {
+          obj[keyPart] = v;
+        } else {
+          if(!obj[keyPart]) {
+            obj[keyPart] = {};
+          }
+          obj = obj[keyPart];
+        }
+      });
+    } else {
+      payload[k] = v;
+    }
+  }
 
   fetch(form.action, {
     method: form.method.toUpperCase(),
@@ -16,20 +38,30 @@ form.addEventListener('submit', function(e) {
     headers: {
       'Content-Type': 'application/json'
     },
-    body: formData,
+    body: JSON.stringify(payload)
   }).then(function(resp) {
-    console.log('submitted');
+    return resp.json();
+  }).then(function(data) {
+    if(data.success) {
+      successMsg.classList.remove('hide');
+    } else {
+      console.error(data.errorCode, data.message);
+      alert("An error occured submitting the comment. If you know what you're doing, feel free to check the console for error details.");
+    }
   }).catch(function(err) {
     console.error(err);
-    var errorCode = (err.responseJSON || {}).errorCode || 'unknown';
-    alert(`An error occured submitting the comment: ${errorCode}`);
-    grecaptcha.reset();
+    alert("An error occured submitting the comment. If you know what you're doing, feel free to check the console for error details.");
   }).finally(function() {
-    submitBtn.setAttribute('disabled', null);
+    submitBtn.removeAttribute('disabled');
+    submitBtn.textContent = 'Submit';
     if(typeof(grecaptcha) !== undefined) {
       grecaptcha.reset();
     }
   });
+});
+
+document.getElementById('close-message').addEventListener('click', function() {
+  successMsg.classList.add('hide');
 });
 
 // Staticman comment replies, from https://github.com/mmistakes/made-mistakes-jekyll
