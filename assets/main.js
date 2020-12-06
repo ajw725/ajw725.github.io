@@ -44,6 +44,7 @@ form.addEventListener('submit', function(e) {
   }).then(function(data) {
     if(data.success) {
       successMsg.classList.remove('hide');
+      form.reset();
     } else {
       console.error(data.errorCode, data.message);
       alert("An error occured submitting the comment. If you know what you're doing, feel free to check the console for error details.");

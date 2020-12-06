@@ -7,7 +7,7 @@ comments:
   format: yaml
   moderation: true
   allowedFields: ["name", "email", "message", "replying_to"]
-  requiredFields: ["name", message"]
+  requiredFields: ["name", "message"]
   generatedFields:
     date:
       type: date
