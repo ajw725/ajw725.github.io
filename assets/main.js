@@ -1,5 +1,5 @@
 // Static comments
-// from: https://github.com/eduardoboucas/popcorn/blob/gh-pages/js/main.js 
+// adapted (without jQuery) from: https://github.com/eduardoboucas/popcorn/blob/gh-pages/js/main.js 
 var form = document.querySelector('.js-comment-form');
 var submitBtn = document.getElementById('comment-form-submit');
 var successMsg = document.getElementById('success-message');
