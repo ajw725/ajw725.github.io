@@ -1,0 +1,26 @@
+.comment {
+  margin-bottom: 1rem;
+}
+
+.comment.child {
+  margin-left: 3rem;
+}
+
+.comment__author {
+  font-weight: bold;
+
+  .comment__date {
+    font-weight: normal;
+    color: $grey-color;
+  }
+}
+
+.comment__reply-link {
+  cursor: pointer;
+  font-size: 90%;
+}
+
+.comment__body p {
+  margin-bottom: 0;
+  font-size: 95%;
+}

@@ -1,75 +1,25 @@
-// Static comments
-// adapted (without jQuery) from: https://github.com/eduardoboucas/popcorn/blob/gh-pages/js/main.js 
-var form = document.querySelector('.js-comment-form');
-var submitBtn = document.getElementById('comment-form-submit');
-var successMsg = document.getElementById('success-message');
-
-form.addEventListener('submit', function(e) {
-  e.preventDefault();
-
-  submitBtn.setAttribute('disabled', 'disabled');
-  submitBtn.textContent = 'Please wait...';
-
-  var payload = {};
-  var formData = new FormData(form);
-  for(var [k, v] of formData) {
-    if(k.includes('[')) {
-      var obj = payload;
-      var keyParts = k.split(/\[|\]/).filter(function(x) { return !!x })
-      var depth = keyParts.length;
-      keyParts.forEach(function(keyPart, idx) {
-        if(idx === depth - 1) {
-          obj[keyPart] = v;
-        } else {
-          if(!obj[keyPart]) {
-            obj[keyPart] = {};
-          }
-          obj = obj[keyPart];
-        }
-      });
-    } else {
-      payload[k] = v;
-    }
-  }
-
-  fetch(form.action, {
-    method: form.method.toUpperCase(),
-    mode: 'cors',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(payload)
-  }).then(function(resp) {
-    return resp.json();
-  }).then(function(data) {
-    if(data.success) {
-      successMsg.classList.remove('hide');
-      form.reset();
-    } else {
-      console.error(data.errorCode, data.message);
-      alert("An error occured submitting the comment. If you know what you're doing, feel free to check the console for error details.");
-    }
-  }).catch(function(err) {
-    console.error(err);
-    alert("An error occured submitting the comment. If you know what you're doing, feel free to check the console for error details.");
-  }).finally(function() {
-    submitBtn.removeAttribute('disabled');
-    submitBtn.textContent = 'Submit';
-    if(typeof(grecaptcha) !== undefined) {
-      grecaptcha.reset();
-    }
-  });
-});
-
-document.getElementById('close-message').addEventListener('click', function() {
-  successMsg.classList.add('hide');
-});
-
 // Staticman comment replies, from https://github.com/mmistakes/made-mistakes-jekyll
 // modified from Wordpress https://core.svn.wordpress.org/trunk/wp-includes/js/comment-reply.js
 // Released under the GNU General Public License - https://wordpress.org/about/gpl/
 // addComment.moveForm is called from comment.html when the reply link is clicked.
 var addComment = {
+  onCancelClick: function() {
+    var t       = addComment,
+    temp    = t.I( 'sm-temp-form-div' ),            //temp is the original bookmark
+    respond = t.I( t.respondId );                   //respond is the comment form
+    
+    if ( ! temp || ! respond ) {
+      return;
+    }
+    
+    t.I( 'comment-replying-to' ).value = null;      //forget the name of the comment
+    temp.parentNode.insertBefore( respond, temp );  //move the comment form to its original location
+    temp.parentNode.removeChild( temp );            //remove the bookmark div
+    this.style.display = 'none';                    //make the cancel link invisible
+    this.onclick = null;                            //retire the onclick handler
+    return false;
+  },
+
   moveForm: function( commId, parentId, respondId, postId ) {
     var div, element, style, cssHidden,
     t           = this,                    //t is the addComment object, with functions moveForm and I, and variable respondId
@@ -101,22 +51,7 @@ var addComment = {
     parent.value = parentId;
     cancel.style.display = '';                        //make the cancel link visible
     
-    cancel.onclick = function() {
-      var t       = addComment,
-      temp    = t.I( 'sm-temp-form-div' ),            //temp is the original bookmark
-      respond = t.I( t.respondId );                   //respond is the comment form
-      
-      if ( ! temp || ! respond ) {
-        return;
-      }
-      
-      t.I( 'comment-replying-to' ).value = null;      //forget the name of the comment
-      temp.parentNode.insertBefore( respond, temp );  //move the comment form to its original location
-      temp.parentNode.removeChild( temp );            //remove the bookmark div
-      this.style.display = 'none';                    //make the cancel link invisible
-      this.onclick = null;                            //retire the onclick handler
-      return false;
-    };
+    cancel.onclick = this.onCancelClick;
     
     /*
     * Set initial focus to the first form focusable element.
@@ -165,3 +100,71 @@ var addComment = {
     return document.getElementById( id );
   }
 };
+
+// Static comments
+// adapted (without jQuery) from: https://github.com/eduardoboucas/popcorn/blob/gh-pages/js/main.js 
+var form = document.querySelector('.js-comment-form');
+var submitBtn = document.getElementById('comment-form-submit');
+var successMsg = document.getElementById('success-message');
+
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  submitBtn.setAttribute('disabled', 'disabled');
+  submitBtn.textContent = 'Please wait...';
+
+  var payload = {};
+  var formData = new FormData(form);
+  for(var [k, v] of formData) {
+    if(k.includes('[')) {
+      var obj = payload;
+      var keyParts = k.split(/\[|\]/).filter(function(x) { return !!x })
+      var depth = keyParts.length;
+      keyParts.forEach(function(keyPart, idx) {
+        if(idx === depth - 1) {
+          obj[keyPart] = v;
+        } else {
+          if(!obj[keyPart]) {
+            obj[keyPart] = {};
+          }
+          obj = obj[keyPart];
+        }
+      });
+    } else {
+      payload[k] = v;
+    }
+  }
+
+  fetch(form.action, {
+    method: form.method.toUpperCase(),
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(payload)
+  }).then(function(resp) {
+    return resp.json();
+  }).then(function(data) {
+    if(data.success) {
+      successMsg.classList.remove('hide');
+      form.reset();
+      addComment.onCancelClick();
+    } else {
+      console.error(data.errorCode, data.message);
+      alert("An error occured submitting the comment. If you know what you're doing, feel free to check the console for error details.");
+    }
+  }).catch(function(err) {
+    console.error(err);
+    alert("An error occured submitting the comment. If you know what you're doing, feel free to check the console for error details.");
+  }).finally(function() {
+    submitBtn.removeAttribute('disabled');
+    submitBtn.textContent = 'Submit';
+    if(typeof(grecaptcha) !== undefined) {
+      grecaptcha.reset();
+    }
+  });
+});
+
+document.getElementById('close-message').addEventListener('click', function() {
+  successMsg.classList.add('hide');
+});

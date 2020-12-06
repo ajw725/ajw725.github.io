@@ -4,9 +4,6 @@
     {{ include.name }},
     <span class="comment__date">
       {% if include.date %}
-        {% if include.index %}
-          <a href="#comment{{ include.index | prepend: '-' }}" title="Permalink to this comment">
-        {% endif %}
         {{ include.date | date_to_long_string }}
         {% comment %}
           {% include format-date.html date=include.date time=false weekDay=false %}
