@@ -23,4 +23,4 @@ Yesterday, though, I was thinking about a project my team is working on, and som
 
 What struck me then was that this exact sentiment is often expressed by artists, musicians, and other creative folk: they get some flash of inspiration and can’t rest until they bring it out into reality. And it suddenly occurred to me that this happens to me all the time. A solution takes shape in my mind and I feel a strong desire to share it, to make it real, so I do my best to create a faithful reproduction. My palette holds code languages and libraries instead of paints or notes or choreography, but this is my art.
 
-I won’t be changing my title to “Lead Code Artist,” but maybe I’m a little more creative than I thought.
+I won’t be changing my title from Lead Developer to Lead Code Artist, but maybe I’m a little more creative than I thought.
