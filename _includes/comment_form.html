@@ -1,0 +1,75 @@
+<form class="js-comment-form form" method="post" action="{{ site.staticman_url }}" autocomplete="off">
+  <input type="hidden" name="options[origin]" value="{{ page.url | absolute_url }}">
+  <input type="hidden" name="options[parent]" value="{{ page.url | absolute_url }}">
+  <input type="hidden" id="comment-replying-to" name="fields[replying_to]" value="">
+  <input type="hidden" name="options[slug]" value="{{ post_slug }}">
+  <input type="hidden" name="options[reCaptcha][siteKey]" value="{{ site.reCaptcha.siteKey }}">
+  <input type="hidden" name="options[reCaptcha][secret]"  value="{{ site.reCaptcha.secret }}">
+
+  <div class="form-field">
+    <label for="comment-form-message">
+      <h2>
+        Leave a comment
+        <small>
+          <a rel="nofollow" id="cancel-comment-reply-link" href="{{ page.url | absolute_url }}#respond" style="display:none;">
+            (cancel reply)
+          </a>
+        </small>
+      </h2>
+    </label>
+    <textarea
+      class="textfield__input"
+      name="fields[message]"
+      type="text" 
+      id="comment-form-message"
+      rows="4"
+    ></textarea>
+  </div>
+
+  <div class="form-field">
+    <label for="comment-form-name">Name</label>
+    <input
+      class="textfield__input"
+      name="fields[name]"
+      type="text"
+      id="comment-form-name"
+      placeholder="Your name"
+    />
+  </div>
+
+  <div class="form-field">
+    <label for="comment-form-email">Email</label>
+    <input
+      class="textfield__input"
+      name="fields[email]"
+      type="email"
+      id="comment-form-email"
+      placeholder="Your email (optional, used only to send comments.)"
+    />
+  </div>
+
+  <div class="form-field notify-me">
+    <input type="checkbox" id="comment-form-reply" name="options[subscribe]" value="email">
+    <label for="comment-form-reply" class="inline">Email me when someone comments</label>
+  </div>
+
+  <div class="form-field">
+    <div class="g-recaptcha" data-sitekey="{{ site.reCaptcha.siteKey }}" data-theme="dark"></div>
+  </div>
+
+  <button class="button" type="submit" id="comment-form-submit">
+    Submit
+  </button>
+</form>
+
+<br>
+<small>
+  <p>
+    Comments are held for moderation. There will be a delay before they appear.
+    <br>
+    Comments may include
+    <a href="https://commonmark.org/help/" target="_blank" rel="nofollow"><strong>Markdown</strong></a>.
+  </p>
+</small>
+
+<script src="/assets/main.js"></script>
