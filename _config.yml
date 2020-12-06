@@ -5,7 +5,7 @@ description: >-
   May include Ruby, JavaScript, AWS, and whatever else I feel like.
   May also include dad jokes.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://andrewweinstein.dev"
+url: "https://hackinginprogress.andrewweinstein.dev"
 github_username:  ajw725
 linkedin_username: ajw725
 staticman_url: https://staticman-ajw.herokuapp.com/v2/entry/ajw725/ajw725.github.io/main/comments
