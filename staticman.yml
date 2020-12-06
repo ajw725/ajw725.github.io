@@ -15,7 +15,7 @@ comments:
         format: "timestamp-seconds"
 
   # Name of the site. Used in notification emails.
-  name: "andrewweinstein.dev"
+  name: "hackinginprogress.andrewweinstein.dev"
   allowedOrigins: ["https://hackinginprogress.andrewweinstein.dev"]
 
   # api key and domain are encrypted
