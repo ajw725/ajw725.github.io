@@ -110,12 +110,23 @@ a {
     color: darken($brand-color, 15%);
   }
   
-  &:hover, .social-media-list:hover {
-    color: $text-color;
-    text-decoration: none;
+  &:hover {
+    color: lighten($brand-color, 15%);
+  }
+}
 
-    .svg-icon {
-      fill: $text-color;
+.social-media-list a {
+  color: $grey-color-dark;
+
+  svg {
+    fill: $grey-color-dark;
+  }
+
+  &:hover {
+    color: $grey-color;
+
+    svg {
+      fill: $grey-color;
     }
   }
 }

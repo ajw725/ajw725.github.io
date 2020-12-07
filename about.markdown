@@ -26,7 +26,9 @@ I like solving problems, and I like to think of myself as a detective when I'm d
 
 ### What's with the title? Are you a hacker?
 
-No.
+Yes, and you can be, too!
+
+Ok, probably not in the way you mean. But [Wikipedia](https://en.wikipedia.org/wiki/Hacker) defines a "hacker" as "a computer expert who uses their technical knowledge to achieve a goal or overcome an obstacle, within a computerized system by non-standard means."
 
 ### How frequently are these questions actually asked?
 
