@@ -1,3 +1,5 @@
+// h/t Willy McAllister https://github.com/willymcallister
+
 // Staticman comment replies, from https://github.com/mmistakes/made-mistakes-jekyll
 // modified from Wordpress https://core.svn.wordpress.org/trunk/wp-includes/js/comment-reply.js
 // Released under the GNU General Public License - https://wordpress.org/about/gpl/
@@ -115,6 +117,9 @@ form.addEventListener('submit', function(e) {
 
   var payload = {};
   var formData = new FormData(form);
+
+  // staticman requires application/json, not multipart/form-data, so...
+  // build regular, serializable JS object from FormData
   for(var [k, v] of formData) {
     if(k.includes('[')) {
       var obj = payload;
