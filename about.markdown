@@ -24,6 +24,10 @@ See [here]({% post_url 2020-12-03-what-is-this-for %}).
 
 I like solving problems, and I like to think of myself as a detective when I'm debugging code. I'm not arrogant enough to think of myself as Sherlock Holmes, though, and I loved Sesame Street when I was a kid. So Sherlock Hemlock it is.
 
+### What's with the title? Are you a hacker?
+
+No.
+
 ### How frequently are these questions actually asked?
 
 At least once, by me, to myself, when I created this page.

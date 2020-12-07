@@ -10,6 +10,7 @@ github_username:  ajw725
 linkedin_username: ajw725
 staticman_url: https://staticman-ajw.herokuapp.com/v2/entry/ajw725/ajw725.github.io/main/comments
 enable_comments: true
+google_analytics: G-FJMJX3JGHL
 
 # Build settings
 theme: minima
