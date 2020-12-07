@@ -18,3 +18,5 @@ I've wanted to set up a personal website for a while, but every time I thought a
 You might think that last question didn't have anything to do with the website, but it's hard to make difficult decisions when you're hungry. So inevitably, I decided what to eat for dinner, and then I forgot about the website entirely for a few months.
 
 Once in a while, though, in the course of my work or side projects, I'd figure something out that I felt might be worth sharing, and eventually I decided that maybe I should do something with those insights other than bore my roommates. I always enjoy reading blog posts and articles by other developers about tricky problems they've solved or new approaches they've tried, so why not add one more voice to the mix?
+
+So here we are. I'm not really sure yet where this will go. There will probably be some tutorials (e.g. setting up or deploying various kinds of applications), deep dives into bugs or problems I've run into, explorations of new tools, and who knows what else. Follow along if that sounds interesting to you!
