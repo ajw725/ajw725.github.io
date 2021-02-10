@@ -26,7 +26,7 @@ I like solving problems, and I like to think of myself as a detective when I'm d
 
 ### What's with the title? Are you a hacker?
 
-I do have an interest in cybersecurity, but no, that's not really what I mean. I dislike getting in trouble too much to be a good hacker anyway. [Wikipedia defines a hacker](https://en.wikipedia.org/wiki/Hacker) as "a computer expert who uses their technical knowledge to achieve a goal or overcome an obstacle, within a computerized system by non-standard means." Who says that has to mean breaking into top-secret systems? Hacking is being unafraid to dive into unfamiliar territory and figure things out on the fly.
+I do have an interest in cybersecurity, but no, that's not really what I mean. I dislike getting in trouble too much to be a good hacker anyway. <a href="https://en.wikipedia.org/wiki/Hacker" target="_blank">Wikipedia defines a hacker</a> as "a computer expert who uses their technical knowledge to achieve a goal or overcome an obstacle, within a computerized system by non-standard means." Who says that has to mean breaking into top-secret systems? Hacking is being unafraid to dive into unfamiliar territory and figure things out on the fly.
 
 There's also <a href="https://media.giphy.com/media/Z543HuFdQAmkg/giphy.gif" target="_blank">this</a>.
 
