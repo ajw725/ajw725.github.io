@@ -128,7 +128,7 @@ Remember how my React app had two pages? Let's try to look at the other one:
 
 Uh oh. What's going on?
 
-Well, let's think about how navigation works in React. Remember that this is a **single-page** app. There's only one actual HTML page! There's just an `index.html` file with some script tags, and all of the content and interaction is rendered and handled by JavaScript. Let's say I have a link on my home page to `/dropdown`, where the link is implemented using the React router. If I click that link, the click is handled by JS, which checks the target and renders the appropriate component. It also updates the browser's navigation bar to match, but there's no actual navigation occurring. The only way the app works at all is that I've told CloudFront to serve `/index.html` as the root object, so when I visit the root path, that's what I get. When I visit `/dropdown` directly, it doesn't know what to do, because there's no file at `/dropdown` in the S3 bucket.
+Well, let's think about how navigation works in React. Remember that this is a **single-page** app. There's only one actual HTML page! There's just an `index.html` file with some script tags, and all of the content and interaction is rendered and handled by JavaScript. Let's say I have a link on my home page to `/dropdown`, where the link is implemented using the React router. If I click that link, the click is handled by JS, which checks the target and renders the appropriate component. It also updates the browser's address bar to match, but there's no actual navigation occurring. The only way the app works at all is that I've told CloudFront to serve `/index.html` as the root object, so when I visit the root path, that's what I get. When I visit `/dropdown` directly, it doesn't know what to do, because there's no file at `/dropdown` in the S3 bucket.
 
 How do we fix this? We can create a custom error-handling rule on the CloudFront distribution. Go back to the distribution and find the "Error Pages" tab, and create a custom error response:
 
@@ -181,3 +181,61 @@ And let's try that dropdown page one more time:
 {% include image.html url="/assets/images/s3-cloudfront/access_granted.png" alt="Success!" width=600 %}
 
 Success! Now that CloudFront is allowed to list the bucket contents, S3 can give it a 404 response to its request for `/dropdown`, and then CloudFront will use our custom 404 error response to return the `/index.html` object. The React app loads, looks at the path, and correctly renders the dropdown component.
+
+### Appendix 1: custom domain
+
+I pointed out a couple of steps above that only apply if you have a custom domain for your distribution. I do, and here's what that looks like:
+
+{% include image.html url="/assets/images/s3-cloudfront/custom_domain.png" alt="Custom domain settings" width=800 %}
+
+I own `andrewsapp.app` and have set up an alias record to point it at the domain of my CloudFront distribution. I've also provisioned an SSL certificate through AWS Certificate Manager in the `us-east-1` region. With this setup, I can visit my custom domain and see the content served from CloudFront:
+
+{% include image.html url="/assets/images/s3-cloudfront/custom_domain_page.png" alt="Custom domain settings" width=600 %}
+
+### Appendix 2: Next.js
+
+This one is fun. I won't go as in depth here, but I wanted to touch on it briefly.
+
+If you're working with Next.js, you're most likely using some form of server-side rendering, which will require some sort of Jamstack deployment like Vercel or an actual Node.js server. However, if you don't have any pages that require request-time SSR, you can export a static build of your app and serve it as a static site.
+
+You'll quickly run into a problem here, though. Let's say you have a page at `pages/posts/index.js`. In local development, you can simply navigate to `/posts` and see the content of this page. When you export the app, it will generate an HTML page like `posts.html`. If you upload this build to an S3/CloudFront deployment as described above and navigate to `/posts`...it won't work, because the file in S3 is actually called `posts.html`. If you append the HTML extension yourself in the address bar, you'll see the page, but this isn't a great user experience. It's even worse because links now behave differently. If you have a link on your home page to `/posts`, when you click that link, the page will load correctly and the address bar will simply show `/posts`. If you then reload the page at that URL, it will break!
+
+One solution is to create an **Edge Lambda function** that will append ".html" to the end of each path. You can link the Lambda function to the CloudFront distribution so it runs on every request. The function, written in TypeScript, would look something like this:
+
+```javascript
+// see https://aws.amazon.com/blogs/compute/implementing-default-directory-indexes-in-amazon-s3-backed-amazon-cloudfront-origins-using-lambdaedge/
+
+import * as path from 'path';
+import { CloudFrontRequestHandler } from 'aws-lambda';
+
+export const lambdaHandler: CloudFrontRequestHandler = (
+  event,
+  _context,
+  callback
+) => {
+  const req = event.Records[0].cf.request;
+  const oldURI = req.uri;
+
+  // replace trailing slash and, if there's no extension (e.g. .js),
+  // add .html, because Next.js exports static HTML files with .html
+  let newURI = oldURI.replace(/\/$/, '');
+  if (!path.extname(newURI)) {
+    newURI += '.html';
+  }
+  req.uri = newURI;
+
+  // Return to CloudFront
+  return callback(null, req);
+};
+```
+
+The function strips off any trailing slashes from the incoming request path, and if there is not yet an extension, it appends ".html" and returns the content it finds at that path. If you visit `/posts`, that's what you'll see in the address bar, but you'll receive the content stored at `/posts.html` in the S3 bucket.
+
+To link the Lambda function to the CloudFront distribution, you'll have to create it in the `us-east-1` region. Then, in the actions menu, you should have an option to "Deploy to Lambda@Edge." Once it's deployed, you can go back to your CloudFront distribution, go to the Behaviors tab, and edit the default behavior for your S3 origin. There is a section for "Lambda Function Associations" where you can set the following options:
+
+1. CloudFront Event: origin request
+1. Lambda Function ARN: the ARN of the function you just created
+
+Your distribution will take a few minutes to update. After it does, your function will run on each request to transform the incoming paths.
+
+Also note that with a Next.js app, you can remove your custom 404 error response, because the routes are actually URLs to different static HTML pages instead of being handled by JS.
