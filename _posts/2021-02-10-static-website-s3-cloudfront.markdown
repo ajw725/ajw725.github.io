@@ -4,6 +4,7 @@ title:  "Deploying a Single-Page App with S3 and Cloudfront"
 date:   2021-02-10 08:00:00 -0700
 tags: aws tutorials
 published: true
+comments: true
 ---
 
 One of my hopes for this blog is to share what I've learned with the world, so that developers from all over can come together and learn from my wisdom.
