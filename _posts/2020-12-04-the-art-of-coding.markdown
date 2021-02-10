@@ -14,7 +14,7 @@ Anyway, here are some thoughts about why I do what I do! Along with a beautiful 
 
 <br> 
 
-{% include image.html url="/assets/images/code_palette.png" description="I probably spent longer creating this image than I did writing the post." %}
+{% include image.html url="/assets/images/code_palette.png" alt="Color palette with programming languages" description="I probably spent longer creating this image than I did writing the post." %}
 
 I don’t think of myself as someone who posts on LinkedIn about my experiences or shares my personal philosophy with the world. Who am I trying to influence, exactly? But I had some career-related thoughts recently that I wanted to share, so here they are.
 

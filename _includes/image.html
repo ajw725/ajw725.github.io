@@ -1,4 +1,8 @@
-<figure class="image">
-  <img src="{{ include.url }}" alt="{{ include.description }}">
-  <figcaption style="text-align: center;">{{ include.description }}</figcaption>
-</figure>
+{% capture img_width %}{{ include.width | default: 300 }}{% endcapture %}
+
+<div style="width: 100%; margin: 0 auto; text-align: center;">
+  <figure class="image">
+    <img src="{{ include.url }}" alt="{{ include.alt }}" style="margin: 0 auto; max-width:{{ img_width }}px;" >
+    <figcaption style="text-align: center;">{{ include.description }}</figcaption>
+  </figure>
+</div>
