@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "The Time I Almost Contributed to Rails"
-date:   2020-12-07 08:00:00 -0700
+date:   2021-02-12 08:00:00 -0700
 tags: ruby rails
 published: false
 ---

@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "I Remember My First Race Condition"
-date:   2021-02-12 08:00:00 -0700
+date:   2021-02-11 08:00:00 -0700
 tags: ruby rails concurrency
 published: true
 comments: true
