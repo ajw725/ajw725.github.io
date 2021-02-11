@@ -84,7 +84,7 @@ Go into CloudFront and create a new distribution. There are lot of options you c
 1. Change "Restrict Bucket Access" to Yes. More on this shortly.
 1. For "Origin Access Identity," choose "Create a New Identity.
 1. For "Grant Read Permissions on Bucket," choose "Yes, Update Bucket Policy."
-1. If you have a custom domain with an SSL certificate, change "Viewer Protocol Policy" to "Redirect HTP to HTTPS."
+1. If you have a custom domain with an SSL certificate, change "Viewer Protocol Policy" to "Redirect HTTP to HTTPS."
 1. For "Price Class," set as desired. Note that the default is worldwide, which is the most expensive option. You can select a smaller region to keep costs down. US, Canada, and Europe is the cheapest.
 1. If you have a custom domain, enter it in the "Alternate Domain Names (CNAMEs)" box.
 1. If you have an SSL certificate in AWS Certificate Manager for your custom domain, select "Custom SSL Certificate" and choose your cert.
