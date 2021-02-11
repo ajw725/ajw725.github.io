@@ -15,7 +15,7 @@ I figured I'd start with something I just did recently, which is...deploying a R
 
 {% include image.html url="/assets/images/excited.jpg" alt="So excited" %}
 
-If the premise of hosting a static site in S3/CloudFront already makes sense to you, feel free to [skip ahead](###Instructions). But if you'd like a little background, keep reading!
+If the premise of hosting a static site in S3/CloudFront already makes sense to you, feel free to [skip ahead](#instructions). But if you'd like a little background, keep reading!
 
 ### A little background
 
