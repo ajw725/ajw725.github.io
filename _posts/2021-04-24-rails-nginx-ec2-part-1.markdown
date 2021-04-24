@@ -94,7 +94,7 @@ $ bundle exec rails g model post title:text body:text
 ```
 
 ```ruby
-# post.rb
+# app/models/post.rb
 
 class Post < ApplicationRecord
   validates_presence_of :title, :body
@@ -102,7 +102,7 @@ end
 ```
 
 ```ruby
-# create posts migration
+# db/migrate/20210424214510_create_posts.rb
 
 class CreatePosts < ActiveRecord::Migration[5.2]
   def change
