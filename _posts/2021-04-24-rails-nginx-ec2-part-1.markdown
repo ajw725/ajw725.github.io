@@ -2,7 +2,7 @@
 layout: post
 title:  "Deploying a Rails app to an EC2 instance (part 1)"
 date:   2021-04-24 16:00:00 -0700
-tags: ruby rails nginx aws ec2 hosting
+tags: ruby rails nginx aws ec2 hosting tutorial
 published: true
 comments: true
 ---

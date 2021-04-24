@@ -2,7 +2,7 @@
 layout: post
 title:  "Deploying a Single-Page App with S3 and Cloudfront"
 date:   2021-02-10 08:00:00 -0700
-tags: aws tutorials
+tags: aws tutorial
 published: true
 comments: true
 ---
